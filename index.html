@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>내 첫번째 아이디어</title>
+  <title>오늘도 힘내세요!</title>
   <style>
     * {
       margin: 0;
@@ -16,47 +16,264 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #eef5ff 0%, #dbeafe 50%, #bfdbfe 100%);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans KR", sans-serif;
+      background: 
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.85) 60%, rgba(226, 232, 240, 0.95) 100%),
+        linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      color: #0f172a;
+      padding: 1.5rem;
     }
 
     .container {
+      position: relative;
       text-align: center;
-      padding: 3.5rem 5rem;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(16px);
-      border-radius: 28px;
-      border: 1px solid rgba(191, 219, 254, 0.6);
+      padding: 3.5rem 4rem;
+      max-width: 540px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.95);
       box-shadow: 
-        0 20px 40px rgba(37, 99, 235, 0.12),
-        0 1px 3px rgba(37, 99, 235, 0.08);
-      animation: fadeIn 0.8s ease-out;
+        0 1px 2px rgba(15, 23, 42, 0.03),
+        0 12px 32px -4px rgba(15, 23, 42, 0.05),
+        0 36px 64px -16px rgba(15, 23, 42, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 1);
+      animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 1px 2px rgba(15, 23, 42, 0.03),
+        0 16px 40px -4px rgba(15, 23, 42, 0.07),
+        0 44px 72px -16px rgba(15, 23, 42, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 1);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      letter-spacing: -0.2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      animation: pulse 2s infinite;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-size: 40px;
       font-weight: 800;
-      color: #1d4ed8;
-      letter-spacing: -1px;
-      text-shadow: 0 4px 16px rgba(29, 78, 216, 0.15);
-      line-height: 1.2;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #64748b;
+      line-height: 1.65;
+      letter-spacing: -0.2px;
+      margin-bottom: 2.2rem;
+      word-break: keep-all;
+    }
+
+    .action-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .primary-btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
+
+    .primary-btn:active {
+      filter: brightness(0.95);
+      transform: translateY(0);
+    }
+
+    .primary-btn .arrow {
+      transition: transform 0.2s ease;
+      font-size: 13px;
+    }
+
+    .primary-btn:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    .footer-note {
+      margin-top: 1.8rem;
+      font-size: 12px;
+      color: #94a3b8;
+      letter-spacing: 0.2px;
     }
 
     @keyframes fadeIn {
       from {
-        opacity: 0;
-        transform: translateY(16px);
+        opacity: 0.8;
+        transform: translateY(12px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.35);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 2.5rem 1.8rem;
+      }
+      h1 {
+        font-size: 32px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>내 첫번째 아이디어</h1>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Daily Inspiration</span>
+    </div>
+    
+    <h1 id="cheerText">오늘도 힘내세요!</h1>
+    
+    <p class="subtitle" id="cheerSub">
+      작은 한 걸음이 모여 빛나는 오늘을 만듭니다.<br>
+      당신의 하루를 진심으로 응원해요.
+    </p>
+
+    <div class="action-group">
+      <button class="primary-btn" id="cheerBtn" onclick="nextCheer()">
+        <span>다음 문장 보기</span>
+        <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <div class="footer-note">
+      <span>● 하루를 채우는 긍정의 에너지</span>
+    </div>
   </div>
+
+  <script>
+    const cheers = [
+      {
+        main: "오늘도 힘내세요!",
+        sub: "작은 한 걸음이 모여 빛나는 오늘을 만듭니다.<br>당신의 하루를 진심으로 응원해요.",
+        bg: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+        shadow: "0 6px 20px rgba(37, 99, 235, 0.35)",
+        dot: "#2563eb"
+      },
+      {
+        main: "충분히 잘하고 있어요",
+        sub: "속도보다 중요한 건 스스로를 아껴주는 마음이에요.<br>오늘 하루도 참 소중합니다.",
+        bg: "linear-gradient(135deg, #eab308 0%, #ca8a04 100%)",
+        shadow: "0 6px 20px rgba(234, 179, 8, 0.4)",
+        dot: "#eab308"
+      },
+      {
+        main: "잠시 숨을 고르고 쉬어가요",
+        sub: "따뜻한 차 한 잔과 함께 편안한 여유를 가져보세요.<br>당신에게 쉼은 꼭 필요해요.",
+        bg: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
+        shadow: "0 6px 20px rgba(249, 115, 22, 0.4)",
+        dot: "#f97316"
+      },
+      {
+        main: "당신은 생각보다 멋진 사람이에요",
+        sub: "어제의 노력들이 모여 오늘의 당신을 만들었어요.<br>스스로를 더 자랑스러워해도 돼요.",
+        bg: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+        shadow: "0 6px 20px rgba(16, 185, 129, 0.4)",
+        dot: "#10b981"
+      },
+      {
+        main: "모든 순간이 성장의 과정이에요",
+        sub: "작은 실수나 흔들림도 더 단단해지는 디딤돌입니다.<br>오늘도 씩씩하게 걸어가 봐요.",
+        bg: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
+        shadow: "0 6px 20px rgba(139, 92, 246, 0.4)",
+        dot: "#8b5cf6"
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function nextCheer() {
+      currentIndex = (currentIndex + 1) % cheers.length;
+      const textEl = document.getElementById("cheerText");
+      const subEl = document.getElementById("cheerSub");
+      const btnEl = document.getElementById("cheerBtn");
+      const dotEl = document.querySelector(".badge-dot");
+      const current = cheers[currentIndex];
+
+      textEl.style.opacity = "0";
+      textEl.style.transform = "translateY(-6px)";
+      subEl.style.opacity = "0";
+
+      // 버튼 및 배지 색상 전환
+      btnEl.style.background = current.bg;
+      btnEl.style.boxShadow = current.shadow;
+      if (dotEl) {
+        dotEl.style.background = current.dot;
+        dotEl.style.boxShadow = `0 0 0 3px ${current.dot}33`;
+      }
+
+      setTimeout(() => {
+        textEl.innerHTML = current.main;
+        subEl.innerHTML = current.sub;
+        textEl.style.opacity = "1";
+        textEl.style.transform = "translateY(0)";
+        subEl.style.opacity = "1";
+      }, 200);
+    }
+  </script>
 </body>
 </html>
